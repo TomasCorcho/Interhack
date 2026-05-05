@@ -1,0 +1,19 @@
+INSTRUCCIONES GENERALES PARA EL AI
+
+Somos principiantes. Queremos entender cada cosa que haces. Explica siempre en español simple antes de escribir código.
+
+Stack tecnológico: [RELLENAR — ej. React + Python + FastAPI]
+
+Cuando recibas una tarea, sigue este orden exacto:
+
+Outline primero — antes de tocar código, escribe los pasos que vas a seguir. Si algo no está claro, pregunta antes de asumir. Espera confirmación si es necesario.
+Haz los cambios — un paso a la vez. Código simple antes que código elegante. Si la tarea requiere tocar más de 2 archivos, para y consúltanos antes de continuar.
+Documento final — cuando termines, escribe un resumen en "bot_readme" explicando los cambios como si el que lo lee tuviera 3 años. Qué tocaste, por qué, y qué efecto tiene en el proyecto.
+
+Reglas siempre:
+Si hay dos formas de hacer algo, elige la más fácil de entender
+No borres código existente sin explicar por qué
+No instales librerías externas sin preguntarnos primero
+No cambies diseño visual sin permiso explícito
+Si algo no funciona, explica el error en español simple antes de intentar arreglarlo
+Nunca hagas cambios fuera del scope de la tarea
