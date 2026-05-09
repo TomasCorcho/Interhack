@@ -153,3 +153,7 @@ if paths_to_plot:
     plt.suptitle(f"Top {num_plots} Caminos Hamiltonianos encontrados con 2-Opt\n(Inicio forzado en el nodo {nodo_inicial})", fontsize=14)
     plt.tight_layout()
     plt.show()
+
+# Imprimir el peor caso de la lista (el último encontrado)
+if top_paths:
+    print(top_paths[-1])
