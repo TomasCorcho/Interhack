@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import Calcular_costo
 import random
 
 # --- Grafo aleatorio de 20 nodos comentado ---
@@ -49,6 +50,19 @@ edges_data = [
 ]
 
 G.add_weighted_edges_from(edges_data)
+
+# Añadir 5 minutos de tiempo de carga a todos los nodos
+for nodo in G.nodes():
+    G.nodes[nodo]['tiempo_carga'] = 5
+
+# Intervalos de bloqueo: la mitad de los clientes no puede recibir de t=0 a t=30
+nodos_bloqueados_1=["Bar Esperanza", "Bar La Gamba"]
+for nodo in nodos_bloqueados_1:
+        G.nodes[nodo]['intervalo_tiempo'] = (0, 30)
+
+nodos_bloqueados_2 = ["Castellers","MAFALDA"]
+for nodo in nodos_bloqueados_2:
+    G.nodes[nodo]['intervalo_tiempo'] = (30, 100)
 
 print(G.nodes())
 print(G.edges(data=True))
@@ -157,3 +171,13 @@ if paths_to_plot:
 # Imprimir el peor caso de la lista (el último encontrado)
 if top_paths:
     print(top_paths[-1])
+
+# --- EVALUACIÓN DE COSTO REAL ---
+print("\n--- Evaluando Costo Real de las Rutas ---")
+rutas_nodos = [p for w, p in top_paths]
+rutas_con_costo = Calcular_costo.calcular_costos_rutas(G, rutas_nodos, multiplicador_tiempo=1.0)
+
+print(f"Rutas válidas evaluadas: {len(rutas_con_costo)}")
+print("Mostrando el top 15 con Costo Real (tiempo de viaje + 5 min carga/nodo):")
+for i, (peso_real, p) in enumerate(rutas_con_costo[:15], 1):
+    print(f"{i}. Costo Real: {peso_real} min | Camino: {' -> '.join(map(str, p))}")
