@@ -193,13 +193,23 @@ def find_top_n_hamiltonian_paths_pruned(graph, n=1):
 import random
 
 def _calculate_path_weight(graph, path):
+    """Calcula el peso total de un camino en el grafo, INCLUYENDO la vuelta (Cycle)."""
     weight = 0
     for i in range(len(path) - 1):
-        u = path[i]
-        v = path[i+1]
-        if v not in graph.get(u, {}):
+        u, v = path[i], path[i+1]
+        if v in graph.get(u, {}):
+            weight += graph[u][v]
+        else:
             return float('inf')
-        weight += graph[u][v]
+            
+    # Añadir el costo de regreso al inicio para completar el ciclo
+    if len(path) > 1:
+        u, v = path[-1], path[0]
+        if v in graph.get(u, {}):
+            weight += graph[u][v]
+        else:
+            return float('inf')
+            
     return weight
 
 def find_top_n_hamiltonian_paths_2opt(graph, n=1000, start_node=None, num_samples=5000):
