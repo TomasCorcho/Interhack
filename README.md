@@ -130,10 +130,10 @@ The program also generates **graph visualizations of the resulting routes**, all
 
 ## Project Structure
 
-The current hackathon version is contained in the `example/` directory:
+The current hackathon version is contained in the `src/` directory:
 
 ```text
-example/
+src/
 ├── Almazen3.py
 ├── Calcular_costo.py
 ├── clarke_wright.py
@@ -179,7 +179,7 @@ Contains the travel-time data used to construct the weighted delivery graph.
 
 ## Running the Project
 
-The backend can be executed from the `example` directory.
+The backend can be executed from the `src` directory.
 
 Install the required Python packages if necessary:
 
